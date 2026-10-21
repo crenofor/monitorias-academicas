@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Monitorias Acadêmicas</title>
+</head>
+<body>
+
+  <header>
+    <h1>Sistema de Monitorias Acadêmicas</h1>
+    <p>Encontre monitores e agende sua monitoria.</p>
+  </header>
+
+  <nav aria-label="Navegação principal">
+    <a href="#inicio">Início</a>
+    <a href="#monitorias">Monitorias</a>
+    <a href="#solicitacoes">Solicitações</a>
+  </nav>
+
+  <main id="inicio">
+
+    <section id="monitorias">
+      <h2>Buscar monitorias</h2>
+      <p>Consulte as disciplinas e os horários disponíveis.</p>
+
+      <button type="button" id="btn-buscar">
+        Buscar monitorias
+      </button>
+    </section>
+
+    <section id="solicitacoes">
+      <h2>Minhas solicitações</h2>
+      <p>Acompanhe o status dos seus agendamentos.</p>
+
+      <button type="button" id="btn-atualizar">
+        Consultar solicitações
+      </button>
+    </section>
+
+    <div
+      id="anuncios"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
+  </main>
+
+  <footer>
+    <p>Projeto acadêmico — Sistema de Monitorias Acadêmicas</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
