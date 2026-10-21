@@ -58,8 +58,7 @@ A prova de conceito utiliza a API `BroadcastChannel` para demonstrar a comunica�
 
 Clone o repositório:
 
-git clone URL_DO_REPOSITORIO
-cd sistema-monitorias-academicas
+git clone https://github.com/crenofor/monitorias-academicas.git
 
 Instale as dependências:
 
