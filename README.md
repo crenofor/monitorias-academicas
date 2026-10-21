@@ -47,3 +47,25 @@ A prova de conceito utiliza a API `BroadcastChannel` para demonstrar a comunica�
 5. Leandro Sousa
 
 ## 7. Pré-requisitos
+
+- Node.js instalado (versão LTS recomendada).
+
+- npm.
+
+- Git.
+
+## 8. Instalação e Execução
+
+Clone o repositório:
+
+git clone https://github.com/crenofor/monitorias-academicas.git
+
+Instale as dependências:
+
+npm install
+
+Execute em ambiente de desenvolvimento:
+
+npm run dev
+
+Acesse o endereço local informado pelo servidor no terminal.
