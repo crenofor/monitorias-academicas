@@ -1,30 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Figtree:wght@400;600&display=swap");
 
-/* -- Variáveis -- */
+/* ===== Variáveis ===== */
 :root {
   --tinta: #1e4a39;
-  --tinta-suave: #4a5578;
+  --tinta-suave: #4b6358;
   --papel: #f3f5fa;
-  --branco: #ffffff;
+  --branco: #fff;
   --linha: #d9deea;
   --azul: #2f4bde;
   --azul-escuro: #2038b8;
   --verde: #12806a;
   --verde-escuro: #0c6552;
-  --marca-texto: #ffd84d;
+  --destaque: #ffd84d;
 
   --fonte-titulo: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --fonte-texto: "Figtree", "Segoe UI", system-ui, sans-serif;
-
   --raio: 12px;
-  --sombra: 0 1px 2px rgba(30, 42, 74, 0.06), 0 8px 24px rgba(30, 42, 74, 0.06);
+
+  /* Cor padrão de cartões e botões (cada seção pode trocar) */
+  --cor: var(--azul);
+  --cor-escura: var(--azul-escuro);
 }
 
-/* -- Base -- */
+/* ===== Base ===== */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
@@ -32,10 +35,7 @@ html {
 }
 
 body {
-  margin: 0;
-  font-family: var(--fonte-texto);
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font: 1.0625rem/1.6 var(--fonte-texto);
   color: var(--tinta);
   background: var(--papel);
 }
@@ -44,29 +44,22 @@ h1,
 h2 {
   font-family: var(--fonte-titulo);
   line-height: 1.15;
-  margin: 0;
 }
 
-p {
-  margin: 0;
-}
-
-/* -- Cabeçalho (folha quadriculada) -- */
+/* ===== Cabeçalho (folha quadriculada) ===== */
 header {
   padding: 3.5rem 1.5rem 3rem;
   text-align: center;
   color: var(--branco);
-  background-color: var(--tinta);
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
-  border-bottom: 6px solid var(--marca-texto);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 28px 28px,
+    var(--tinta);
+  border-bottom: 6px solid var(--destaque);
 }
 
 header h1 {
   font-size: clamp(1.9rem, 5vw, 3rem);
-  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -74,10 +67,10 @@ header p {
   max-width: 34rem;
   margin: 0.85rem auto 0;
   font-size: 1.15rem;
-  color: #c9d1ec;
+  color: #cfe3da;
 }
 
-/* -- Navegação -- */
+/* ===== Navegação ===== */
 nav {
   position: sticky;
   top: 0;
@@ -96,14 +89,14 @@ nav a {
   color: var(--tinta);
   text-decoration: none;
   border-radius: 8px;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s;
 }
 
 nav a:hover {
-  background: var(--marca-texto);
+  background: var(--destaque);
 }
 
-/* -- Conteúdo principal -- */
+/* ===== Conteúdo ===== */
 main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -113,99 +106,84 @@ main {
   padding: 2.5rem 1.5rem 3rem;
 }
 
-/* -- Cartões das seções -- */
-main > section {
-  --cor: var(--azul);
-  --cor-escura: var(--azul-escuro);
-
+section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
   padding: 1.75rem;
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 5rem; /* espaço para o menu fixo */
   background: var(--branco);
   border: 1px solid var(--linha);
   border-top: 5px solid var(--cor);
   border-radius: var(--raio);
-  box-shadow: var(--sombra);
+  box-shadow: 0 1px 2px rgba(30, 74, 57, 0.06), 0 8px 24px rgba(30, 74, 57, 0.06);
 }
 
-/* Cada seção tem uma cor específica */
 #solicitacoes {
   --cor: var(--verde);
   --cor-escura: var(--verde-escuro);
 }
 
-main > section h2 {
+section h2 {
   font-size: 1.5rem;
-  color: var(--tinta);
 }
 
-main > section p {
+section p {
   color: var(--tinta-suave);
 }
 
-/* -- Botões -- */
+/* ===== Botões ===== */
 button {
   margin-top: auto;
   padding: 0.75rem 1.4rem;
-  font-family: var(--fonte-texto);
-  font-size: 1rem;
-  font-weight: 600;
+  font: 600 1rem var(--fonte-texto);
   color: var(--branco);
-  background: var(--cor, var(--azul));
-  border: none;
+  background: var(--cor);
+  border: 0;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.1s ease;
+  transition: background-color 0.15s, transform 0.1s;
 }
 
 button:hover {
-  background: var(--cor-escura, var(--azul-escuro));
+  background: var(--cor-escura);
 }
 
 button:active {
   transform: translateY(1px);
 }
 
-/* -- Área de avisos (aria-live) -- */
+/* ===== Avisos (aparece só quando o JavaScript escreve algo) ===== */
 #anuncios {
   grid-column: 1 / -1;
+  padding: 1rem 1.25rem;
+  background: #fff9db;
+  border: 1px solid #f0dc7a;
+  border-left: 6px solid var(--destaque);
+  border-radius: var(--raio);
 }
 
-/* Some quando está vazia, aparece quando o JavaScript escrever algo */
 #anuncios:empty {
   display: none;
 }
 
-#anuncios:not(:empty) {
-  padding: 1rem 1.25rem;
-  background: #fff9db;
-  border: 1px solid #f0dc7a;
-  border-left: 6px solid var(--marca-texto);
-  border-radius: var(--raio);
-  color: var(--tinta);
-}
-
-/* -- Rodapé -- */
+/* ===== Rodapé ===== */
 footer {
   padding: 1.75rem 1.5rem;
   text-align: center;
   font-size: 0.95rem;
   color: var(--tinta-suave);
-  border-top: 1px solid var(--linha);
   background: var(--branco);
+  border-top: 1px solid var(--linha);
 }
 
-/* -- Acessibilidade: foco visível -- */
-a:focus-visible,
-button:focus-visible {
+/* ===== Acessibilidade ===== */
+:focus-visible {
   outline: 3px solid var(--tinta);
   outline-offset: 3px;
 }
 
-/* -- Respeita quem reduz animações -- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -216,13 +194,8 @@ button:focus-visible {
   }
 }
 
-/*-- celular e tablet --*/
+/* ===== Celular ===== */
 @media (max-width: 700px) {
-  main {
-    grid-template-columns: 1fr;
-    padding: 1.5rem 1rem 2rem;
-  }
-
   header {
     padding: 2.5rem 1rem 2.25rem;
   }
@@ -235,6 +208,11 @@ button:focus-visible {
   nav a {
     padding: 0.5rem 0.75rem;
     font-size: 0.95rem;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem 2rem;
   }
 
   button {
