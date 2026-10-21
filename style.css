@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap");
+
+/* -- Variáveis -- */
+:root {
+  --tinta: #1e4a39;
+  --tinta-suave: #4a5578;
+  --papel: #f3f5fa;
+  --branco: #ffffff;
+  --linha: #d9deea;
+  --azul: #2f4bde;
+  --azul-escuro: #2038b8;
+  --verde: #12806a;
+  --verde-escuro: #0c6552;
+  --marca-texto: #ffd84d;
+
+  --fonte-titulo: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --fonte-texto: "Figtree", "Segoe UI", system-ui, sans-serif;
+
+  --raio: 12px;
+  --sombra: 0 1px 2px rgba(30, 42, 74, 0.06), 0 8px 24px rgba(30, 42, 74, 0.06);
+}
+
+/* -- Base -- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--papel);
+}
+
+h1,
+h2 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.15;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* -- Cabeçalho (folha quadriculada) -- */
+header {
+  padding: 3.5rem 1.5rem 3rem;
+  text-align: center;
+  color: var(--branco);
+  background-color: var(--tinta);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  border-bottom: 6px solid var(--marca-texto);
+}
+
+header h1 {
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  max-width: 34rem;
+  margin: 0.85rem auto 0;
+  font-size: 1.15rem;
+  color: #c9d1ec;
+}
+
+/* -- Navegação -- */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  background: var(--branco);
+  border-bottom: 1px solid var(--linha);
+}
+
+nav a {
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  color: var(--tinta);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+}
+
+nav a:hover {
+  background: var(--marca-texto);
+}
+
+/* -- Conteúdo principal -- */
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+/* -- Cartões das seções -- */
+main > section {
+  --cor: var(--azul);
+  --cor-escura: var(--azul-escuro);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  scroll-margin-top: 5rem;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-top: 5px solid var(--cor);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+/* Cada seção tem uma cor específica */
+#solicitacoes {
+  --cor: var(--verde);
+  --cor-escura: var(--verde-escuro);
+}
+
+main > section h2 {
+  font-size: 1.5rem;
+  color: var(--tinta);
+}
+
+main > section p {
+  color: var(--tinta-suave);
+}
+
+/* -- Botões -- */
+button {
+  margin-top: auto;
+  padding: 0.75rem 1.4rem;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--branco);
+  background: var(--cor, var(--azul));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: var(--cor-escura, var(--azul-escuro));
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* -- Área de avisos (aria-live) -- */
+#anuncios {
+  grid-column: 1 / -1;
+}
+
+/* Some quando está vazia, aparece quando o JavaScript escrever algo */
+#anuncios:empty {
+  display: none;
+}
+
+#anuncios:not(:empty) {
+  padding: 1rem 1.25rem;
+  background: #fff9db;
+  border: 1px solid #f0dc7a;
+  border-left: 6px solid var(--marca-texto);
+  border-radius: var(--raio);
+  color: var(--tinta);
+}
+
+/* -- Rodapé -- */
+footer {
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--tinta-suave);
+  border-top: 1px solid var(--linha);
+  background: var(--branco);
+}
+
+/* -- Acessibilidade: foco visível -- */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--tinta);
+  outline-offset: 3px;
+}
+
+/* -- Respeita quem reduz animações -- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
+
+/*-- celular e tablet --*/
+@media (max-width: 700px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  header {
+    padding: 2.5rem 1rem 2.25rem;
+  }
+
+  nav {
+    gap: 0;
+    padding: 0.4rem 0.5rem;
+  }
+
+  nav a {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
